@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Jiayi/Desktop/CWK_1/new
+# Install script for directory: C:/Users/Jiayi/Desktop/CWK_1/library/2022_cw1_Library_Management_Library_Management
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/Jiayi/Desktop/CWK_1/new/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/Jiayi/Desktop/CWK_1/library/2022_cw1_Library_Management_Library_Management/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

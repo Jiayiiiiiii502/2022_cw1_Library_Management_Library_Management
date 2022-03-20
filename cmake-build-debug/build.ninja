@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:/Users/Jiayi/Desktop/CWK_1/new/cmake-build-debug/
+cmake_ninja_workdir = C$:/Users/Jiayi/Desktop/CWK_1/library/2022_cw1_Library_Management_Library_Management/cmake-build-debug/
 # =============================================================================
 # Object build statements for EXECUTABLE target new
 
@@ -49,20 +49,38 @@ cmake_ninja_workdir = C$:/Users/Jiayi/Desktop/CWK_1/new/cmake-build-debug/
 
 build cmake_object_order_depends_target_new: phony || CMakeFiles/new.dir
 
-build CMakeFiles/new.dir/main.c.obj: C_COMPILER__new_Debug C$:/Users/Jiayi/Desktop/CWK_1/new/main.c || cmake_object_order_depends_target_new
+build CMakeFiles/new.dir/main.c.obj: C_COMPILER__new_Debug C$:/Users/Jiayi/Desktop/CWK_1/library/2022_cw1_Library_Management_Library_Management/main.c || cmake_object_order_depends_target_new
   DEP_FILE = CMakeFiles\new.dir\main.c.obj.d
   FLAGS = -g -std=gnu99
   OBJECT_DIR = CMakeFiles\new.dir
   OBJECT_FILE_DIR = CMakeFiles\new.dir
 
-build CMakeFiles/new.dir/book_management.c.obj: C_COMPILER__new_Debug C$:/Users/Jiayi/Desktop/CWK_1/new/book_management.c || cmake_object_order_depends_target_new
+build CMakeFiles/new.dir/book_management.c.obj: C_COMPILER__new_Debug C$:/Users/Jiayi/Desktop/CWK_1/library/2022_cw1_Library_Management_Library_Management/book_management.c || cmake_object_order_depends_target_new
   DEP_FILE = CMakeFiles\new.dir\book_management.c.obj.d
   FLAGS = -g -std=gnu99
   OBJECT_DIR = CMakeFiles\new.dir
   OBJECT_FILE_DIR = CMakeFiles\new.dir
 
-build CMakeFiles/new.dir/page.c.obj: C_COMPILER__new_Debug C$:/Users/Jiayi/Desktop/CWK_1/new/page.c || cmake_object_order_depends_target_new
+build CMakeFiles/new.dir/page.c.obj: C_COMPILER__new_Debug C$:/Users/Jiayi/Desktop/CWK_1/library/2022_cw1_Library_Management_Library_Management/page.c || cmake_object_order_depends_target_new
   DEP_FILE = CMakeFiles\new.dir\page.c.obj.d
+  FLAGS = -g -std=gnu99
+  OBJECT_DIR = CMakeFiles\new.dir
+  OBJECT_FILE_DIR = CMakeFiles\new.dir
+
+build CMakeFiles/new.dir/user.c.obj: C_COMPILER__new_Debug C$:/Users/Jiayi/Desktop/CWK_1/library/2022_cw1_Library_Management_Library_Management/user.c || cmake_object_order_depends_target_new
+  DEP_FILE = CMakeFiles\new.dir\user.c.obj.d
+  FLAGS = -g -std=gnu99
+  OBJECT_DIR = CMakeFiles\new.dir
+  OBJECT_FILE_DIR = CMakeFiles\new.dir
+
+build CMakeFiles/new.dir/librarian.c.obj: C_COMPILER__new_Debug C$:/Users/Jiayi/Desktop/CWK_1/library/2022_cw1_Library_Management_Library_Management/librarian.c || cmake_object_order_depends_target_new
+  DEP_FILE = CMakeFiles\new.dir\librarian.c.obj.d
+  FLAGS = -g -std=gnu99
+  OBJECT_DIR = CMakeFiles\new.dir
+  OBJECT_FILE_DIR = CMakeFiles\new.dir
+
+build CMakeFiles/new.dir/login.c.obj: C_COMPILER__new_Debug C$:/Users/Jiayi/Desktop/CWK_1/library/2022_cw1_Library_Management_Library_Management/login.c || cmake_object_order_depends_target_new
+  DEP_FILE = CMakeFiles\new.dir\login.c.obj.d
   FLAGS = -g -std=gnu99
   OBJECT_DIR = CMakeFiles\new.dir
   OBJECT_FILE_DIR = CMakeFiles\new.dir
@@ -75,7 +93,7 @@ build CMakeFiles/new.dir/page.c.obj: C_COMPILER__new_Debug C$:/Users/Jiayi/Deskt
 #############################################
 # Link the executable new.exe
 
-build new.exe: C_EXECUTABLE_LINKER__new_Debug CMakeFiles/new.dir/main.c.obj CMakeFiles/new.dir/book_management.c.obj CMakeFiles/new.dir/page.c.obj
+build new.exe: C_EXECUTABLE_LINKER__new_Debug CMakeFiles/new.dir/main.c.obj CMakeFiles/new.dir/book_management.c.obj CMakeFiles/new.dir/page.c.obj CMakeFiles/new.dir/user.c.obj CMakeFiles/new.dir/librarian.c.obj CMakeFiles/new.dir/login.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\new.dir
@@ -90,7 +108,7 @@ build new.exe: C_EXECUTABLE_LINKER__new_Debug CMakeFiles/new.dir/main.c.obj CMak
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Jiayi\Desktop\CWK_1\new\cmake-build-debug && "D:\softwares\CLion\Clion\CLion 2021.3.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D C:\Users\Jiayi\Desktop\CWK_1\library\2022_cw1_Library_Management_Library_Management\cmake-build-debug && "D:\softwares\CLion\Clion\CLion 2021.3.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -101,7 +119,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Jiayi\Desktop\CWK_1\new\cmake-build-debug && "D:\softwares\CLion\Clion\CLion 2021.3.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\Jiayi\Desktop\CWK_1\new -BC:\Users\Jiayi\Desktop\CWK_1\new\cmake-build-debug"
+  COMMAND = cmd.exe /C "cd /D C:\Users\Jiayi\Desktop\CWK_1\library\2022_cw1_Library_Management_Library_Management\cmake-build-debug && "D:\softwares\CLion\Clion\CLion 2021.3.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\Jiayi\Desktop\CWK_1\library\2022_cw1_Library_Management_Library_Management -BC:\Users\Jiayi\Desktop\CWK_1\library\2022_cw1_Library_Management_Library_Management\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -119,7 +137,7 @@ build new: phony new.exe
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/Jiayi/Desktop/CWK_1/new/cmake-build-debug
+# Folder: C:/Users/Jiayi/Desktop/CWK_1/library/2022_cw1_Library_Management_Library_Management/cmake-build-debug
 
 build all: phony new.exe
 
