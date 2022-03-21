@@ -36,7 +36,7 @@ void users_file_to_list()
 }
 
 //user borrow books initial info
-void user_borrow(User* borrow)//用户信息初始化  link_list
+void user_borrow(User* borrow)
 {
     borrow->user_book.borrow_num = 0;
     borrow->user_book.max_num = 10;
@@ -44,8 +44,7 @@ void user_borrow(User* borrow)//用户信息初始化  link_list
 }
 
 //store user borrow info from linklist to flie
-void store_users()//将temp结构体写入用户信息文件中  user_login
-{
+void store_users(){
     FILE* fp = fopen("the_users.txt", "wb");
     User* temp = user_head_node->next;
     while (temp)
@@ -57,8 +56,7 @@ void store_users()//将temp结构体写入用户信息文件中  user_login
 }
 
 //user_registration:
-void user_register()//账户注册   user_registration
-{
+void user_register(){
     char username[30];
     printf("Please enter your username:\n");
     scanf("%s", username);
@@ -81,8 +79,7 @@ void user_register()//账户注册   user_registration
 }
 
 //search username in the linklist
-User* search_username(char* name)  //user_login
-{
+User* search_username(char* name)  {
     User* np = user_head_node->next;
     while (np)
     {
@@ -93,8 +90,7 @@ User* search_username(char* name)  //user_login
 }
 
 
-void creat_user_list(char* username, char*name,char* password)//创建用户信息链表，并调用store users函数   link_list
-{
+void creat_user_list(char* username, char*name,char* password){
     User* np;
     np = user_head_node;
     while (np->next) np = np->next;

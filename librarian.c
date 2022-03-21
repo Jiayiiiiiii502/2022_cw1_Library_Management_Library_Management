@@ -2,4 +2,67 @@
 // Created by Jiayi on 2022/3/17.
 //
 
+#include <stdlib.h>
 #include "librarian.h"
+#include "page.h"
+
+//add a book to the linklist and invoke create_book_list to update the linklist
+void add_book(){
+    char title[100],author[100];
+    int id,year,copies;
+    printf("Please follow the following rules (use '_' to represent ' '):\n");
+    printf("Please enter the title:\n");
+    scanf("%s",title);
+    printf("Please enter the author:\n");
+    scanf("%s",author);
+    printf("Please enter the id:\n");
+    scanf("%d", &id);
+    printf("Please enter the year:\n");
+    scanf("%d", &year);
+    printf("Please enter its copies:\n");
+    scanf("%d", &copies);
+
+    book_num++;
+    creat_book_list(title, author, id, year, copies);
+    printf("<%s> has been added to the library successfully!\n", title);
+    librarian_menu();
+}
+
+
+//librarian to remove a book from the library
+void remove_book(){
+    while (1)
+    {
+        display_book();
+        printf("Please enter the order of the book you wanna move out:(-1 to quit):\n");
+        int choice;
+        scanf("%d", &choice);
+        if (choice == -1)
+        {
+            printf("Come back successfully!\n");
+            return;
+        }
+        else if(choice<=book_num && choice>0){
+            Book* tb;
+            Book* np;
+            np = book_head;
+            tb = book_head->next;
+            for (int i = 1; i < choice; ++i)
+            {
+                np = tb;
+                tb = tb->next;
+            }
+            np->next = tb->next;
+            free(tb);
+            book_num--;
+            store_books();
+            printf("Remove successfully!\n");
+        }
+        else
+        {
+            printf("Invalid id!\n");
+            printf("Please tyr again!\n");
+        }
+
+    }
+}

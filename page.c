@@ -7,8 +7,8 @@
 #include "librarian.h"
 #include "login.h"
 #include "book_management.h"
-void main_menu()//show_page模块
-{
+//page for all users
+void main_menu(){
     while (1)
     {
         load_books();
@@ -42,9 +42,8 @@ void main_menu()//show_page模块
 }
 
 
-//用户操作主页
-void user_menu(User* temp)  //show_page
-{
+//user manipulation page
+void user_menu(User* temp) {
     printf("+--------------------------------------------------------------+\n");
     printf("user:%s\n", temp->user_name);
     printf("Please enter your option\n");
@@ -90,8 +89,10 @@ void librarian_menu(){
     scanf("%d",&option);
     switch(option){
         case 1: add_book();
+        //printf("Over");
             break;
         case 2: remove_book();
+            //printf("Over");
             break;
         case 3: find_book_menu();
             break;
