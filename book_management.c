@@ -2,7 +2,6 @@
 // Created by Jiayi on 2022/3/17.
 //
 
-
 #include <malloc.h>
 #include <string.h>
 #include "book_management.h"
@@ -16,17 +15,6 @@ void load_books()
 
     FILE* fp2;
     fp2 = fopen("library_new.txt", "rb");
-//    if (fp2 == NULL)
-//    {
-//        fp2 = fopen("library.txt", "wb");
-//        if (fp2 == NULL)
-//        {
-//            printf("Fail to load the books!\n"); exit(0);
-//        }
-//        fclose(fp2);
-//    }
-//    else
-//    {
     Book* bp;
     bp = book_head;
     Book* tp = (Book*)malloc(sizeof(Book));
@@ -38,7 +26,6 @@ void load_books()
         bp = bp->next;
     }
     fclose(fp2);
-//    }
 }
 
 
@@ -54,11 +41,12 @@ void store_books(){
     fclose(fp);
 }
 
-void creat_book_list(char* title, char* author, int id, int year, int copies)//更新所有书籍链表，调用store函数将新链表写入文件中
-{
+void creat_book_list(char* title, char* author, int id, int year, int copies){
     Book* np;
     np = book_head;
-    while (np->next) np = np->next;
+    while (np->next) {
+        np = np->next;
+    }
     Book* tb = (Book*)malloc(sizeof(Book));
     strcpy(tb->authors, author);
     strcpy(tb->title, title);
@@ -164,12 +152,15 @@ void display_book(){
 
     Book* all;
     all = book_head->next;
-    printf("THE BOOKARRAY:\n");
+    printf("-------------------------------Library---------------------------------\n");
     printf("ID\t\tTitle\t\tAuthor\t\tYear\t\tCopies\n");
-    while (all)
-    {
-        printf("%-15d %-15s %-20s %-15d %-15d\n", all->id, all->title, all->authors, all->year, all->copies);
-        all = all->next;
+    for(int i=1;i<=book_num;i++){
+        while (all)
+        {
+            printf("%-15d %-15s %-20s %-15d %-15d\n", i, all->title, all->authors, all->year, all->copies);
+            all = all->next;
+            i++;
+        }
     }
 }
 

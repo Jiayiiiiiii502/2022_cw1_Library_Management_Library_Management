@@ -2,7 +2,7 @@
 #include "page.h"
 
 int main() {
-    printf("Hello, World!\n");
+    printf("Welcome!\n");
     main_menu();
     return 0;
 }

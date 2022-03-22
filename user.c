@@ -11,7 +11,7 @@ void borrow_book(User* temp) {
     //create temp to store single user's book initialisation
     int temp_borrow = temp->user_book.borrow_num;
     int max_borrow = temp->user_book.max_num;
-    //判断是否借到上线数目
+    //ensure the number of borrowed books is small than 10
     if (temp_borrow == max_borrow) {
         printf("%s has borrowed %d books, please return a book first!\n", temp->user_name, max_borrow);
     }
@@ -61,29 +61,7 @@ void show_borrow(User* temp){
 
 
 void return_book(User* account){
-//    int choice;
-//    //检查是否有借书
-//    if(!temp->user_book.borrow_num){
-//        printf("You have borrowed 0 books!\n");
-//        printf("Please borrow a book first!\n");
-//        return;
-//    }
-//    show_borrow(temp);
-//    printf("Please enter thr order of the book you wanna return(-1 to quit):\n");
-//    scanf("%d",&choice);
-//    if(choice==-1){
-//        printf("Come back successfully!\n");
-//        return;
-//    }
-//    if(choice>=0 && choice>temp->user_book.borrow_num){
-//        int i=0;
-//        Book*tb;
-//        for(choice--;i<choice;++i){
-//
-//        }
-//    }
-
-    while (1)
+    while (2)
     {
         show_borrow(account);
         if (!account->user_book.borrow_num)
@@ -91,13 +69,14 @@ void return_book(User* account){
             return;
         }
         printf("Please enter the serial number of the book you need to return (enter -1 to exit the book return system)!\n");
-        int cnt = 0; scanf("%d", &cnt);
-        if (cnt == -1)
+        int option;
+        scanf("%d", &option);
+        if (option == -1)
         {
             printf("Exiting the review system\n");
             return;
         }
-        if (cnt > account->user_book.borrow_num || cnt < 0)
+        if (option > account->user_book.borrow_num || option < 0)
         {
             printf("invalid option!\n");
         }
@@ -106,11 +85,10 @@ void return_book(User* account){
             int i = 0;
             Book* tb;
             tb = book_head->next;
-            for (--cnt; i < cnt; ++i);
-
+            for (--option; i < option; ++i);
             char title[100];
             strcpy(title, account->user_book.borrow_book[i].title);
-            printf("*************************************************\n");
+            printf("------------------------------------------------------\n");
             for (; i < account->user_book.borrow_num; ++i)
             {
                 account->user_book.borrow_book[i] = account->user_book.borrow_book[i + 1];

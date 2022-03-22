@@ -135,11 +135,6 @@ void user_login()//用户登录
 
 
 
-
-
-
-
-
 //librarian login:
 User* librarian_info()
 {

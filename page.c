@@ -36,7 +36,9 @@ void main_menu(){
             case 5: find_book_menu();
                 break;
             case 6: return;
-            default: printf("Invalid option!\n"); break;
+            default:
+                fflush(stdin);
+                printf("Invalid option!\n"); break;
         }
     }
 }
@@ -71,7 +73,9 @@ void user_menu(User* temp) {
             printf("Borrow book!\n");
             break;
         case 0: printf("come back successfully!\n");return;
-        default: printf("Invalid option!\n"); break;
+        default:
+            fflush(stdin);
+            printf("Invalid option!\n"); break;
     }
 }
 
@@ -100,7 +104,10 @@ void librarian_menu(){
             break;
         case 5:printf("Librarian has been logged out!\n");
             return;
-        default:printf("Invalid choice!\n");
+        default:
+            fflush(stdin);
+            break;
+            //printf("Invalid choice!\n");
     }
 }
 
@@ -123,7 +130,9 @@ void find_book_menu(){
             break;
         case 4: printf("Come back successfully!\n");
             return;
-        default:printf("Invalid choice!\n");
+        default:
+            fflush(stdin);
+            printf("Invalid choice!\n");
             printf("Please try again!\n");
             find_book_menu();
     }
