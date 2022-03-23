@@ -15,10 +15,10 @@
 
 typedef struct _Book {
     unsigned int id; //Book ID
-    //char *title; //book title
-    char title[50];
-    //char *authors; //comma separated list of authors
-    char authors[50];
+    char *title; //book title
+    char temp_title[50];
+    char *authors; //comma separated list of authors
+    char temp_authors[50];
     unsigned int year; // year of publication
     unsigned int copies; //number of copies the library has
     struct _Book *next; //pointer to the next book element

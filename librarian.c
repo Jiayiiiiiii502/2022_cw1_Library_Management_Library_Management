@@ -3,11 +3,13 @@
 //
 
 #include <stdlib.h>
+#include <string.h>
 #include "librarian.h"
 #include "page.h"
 
 //add a book to the linklist and invoke create_book_list to update the linklist
 void add_book(){
+    //create temp array to get the size of title/author
     char title[100],author[100];
     int id,year,copies;
     printf("Please follow the following rules (use '_' to represent ' '):\n");
@@ -21,9 +23,9 @@ void add_book(){
     scanf("%d", &year);
     printf("Please enter its copies:\n");
     scanf("%d", &copies);
-
     book_num++;
-    creat_book_list(title, author, id, year, copies);
+    //invoke create_book_list to add new book to the las linklist node and update linklist to the file
+    creat_book_list(title,author,id,year,copies);
     printf("<%s> has been added to the library successfully!\n", title);
     librarian_menu();
 }
