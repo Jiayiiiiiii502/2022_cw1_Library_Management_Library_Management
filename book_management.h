@@ -38,11 +38,6 @@ typedef struct _BookArray {
 }BookArray;
 
 
-struct node{
-    int borrow_num;
-    int max_num;
-    Book borrow_book[3];
-};
 
 //saves the database of books in the specified file
 //returns 0 if books were stored correctly, or an error code otherwise

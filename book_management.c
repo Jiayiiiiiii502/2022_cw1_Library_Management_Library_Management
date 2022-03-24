@@ -15,11 +15,11 @@ void load_books()
     book_head->next = NULL;
     book_num = 0;
 
-    //check the file
+    //check the file exist
     FILE* fp2;
-    fp2 = fopen("library_.txt", "rb");
+    fp2 = fopen("library_new.txt", "rb");
     if(fp2==NULL){
-        fp2=fopen("library_.txt","wb");
+        fp2=fopen("library_new.txt","wb");
         if(fp2==NULL){
             printf("Fail to load the file!\n");
             exit(0);
@@ -45,9 +45,9 @@ void load_books()
 
 
 
-//store books from linklist to file
+//store books from linklist to binary file
 void store_books(){
-    FILE*fp = fopen("library_.txt", "wb");
+    FILE*fp = fopen("library_new.txt", "wb");
     Book* tb = book_head->next;
     while (tb)
     {

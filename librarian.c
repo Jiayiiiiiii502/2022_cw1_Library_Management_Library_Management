@@ -3,7 +3,6 @@
 //
 
 #include <stdlib.h>
-#include <string.h>
 #include "librarian.h"
 #include "page.h"
 
@@ -12,6 +11,7 @@ void add_book(){
     //create temp array to get the size of title/author
     char title[100],author[100];
     int id,year,copies;
+    printf("------------------------------------------------\n");
     printf("Please follow the following rules (use '_' to represent ' '):\n");
     printf("Please enter the title:\n");
     scanf("%s",title);
@@ -27,6 +27,7 @@ void add_book(){
     //invoke create_book_list to add new book to the las linklist node and update linklist to the file
     creat_book_list(title,author,id,year,copies);
     printf("<%s> has been added to the library successfully!\n", title);
+    printf("------------------------------------------------\n");
     librarian_menu();
 }
 
@@ -35,6 +36,8 @@ void add_book(){
 void remove_book(){
     while (1)
     {
+        printf("------------------------------------------------\n");
+        //display all the books in the library
         display_book();
         printf("Please enter the order of the book you wanna move out:(-1 to quit):\n");
         int choice;
@@ -42,9 +45,11 @@ void remove_book(){
         if (choice == -1)
         {
             printf("Come back successfully!\n");
+            printf("------------------------------------------------\n");
             return;
         }
         else if(choice<=book_num && choice>0){
+            //remove specific book from the books linklist
             Book* tb;
             Book* np;
             np = book_head;
@@ -59,6 +64,7 @@ void remove_book(){
             book_num--;
             store_books();
             printf("Remove successfully!\n");
+            printf("------------------------------------------------\n");
         }
         else
         {

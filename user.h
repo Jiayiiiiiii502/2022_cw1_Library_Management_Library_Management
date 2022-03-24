@@ -4,28 +4,32 @@
 
 #ifndef NEW_USER_H
 #define NEW_USER_H
-
 #include "book_management.h"
-//用户管理链表：
-typedef struct user//user
+
+//borrow book linklist of a specific user
+struct borrow_node{
+    int borrow_num;//number of borrowed books
+    int max_num;//constrain the number of every user(10)
+    Book borrow_book[3];
+};
+
+typedef struct user
 {
     char name[20];
-    char user_name[30];  //user student ID
-    char password[30];  //password
-    int admin;  //Whether the administrator
-    struct node user_book;  //Books borrowed by users.
-    struct user* next;  //next user
+    char user_name[30];
+    char password[30];
+    struct borrow_node user_book;  //create a borrow book linklist for a specific user
+    struct user* next;  //user linklist
 }User;
 
-//用户初始化：
+//initialisation
 int user_num;  //the number of user
-User* user_head_node;
+User* user_head_node;//create user linklist head node
 
-//用户操作：
+
+//user function (every user has one)
 void borrow_book(User*);
 void return_book(User*);
 void show_borrow(User*);
-
-
 
 #endif //NEW_USER_H

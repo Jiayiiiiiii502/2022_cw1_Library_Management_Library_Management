@@ -8,9 +8,13 @@
 #include "book_management.h"
 #include "user.h"
 
-//页面展示：
-void main_menu();  //main menu
+//all pages
+//initial page for all browsers
+void main_menu();
+//specific user function page
 void user_menu(User*);
+//library function page
 void librarian_menu();
+//find books function page
 void find_book_menu();
 #endif //NEW_PAGE_H
