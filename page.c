@@ -53,7 +53,7 @@ void user_menu(User* temp) {
     printf("2)return book\n");
     printf("3)my borrow\n");
     printf("4)display book\n");
-    //printf("5)change password\n");
+    printf("5)change password\n");
     //printf("6)remove account\n");
     printf("0)log out\n");
     printf("------------------------------------------------\n");
@@ -69,6 +69,7 @@ void user_menu(User* temp) {
             break;
         case 4: display_book();
             break;
+        case 5: change_password(temp);
         case 0: printf("come back successfully!\n");return;
         default:
             fflush(stdin);

@@ -31,5 +31,6 @@ User* user_head_node;//create user linklist head node
 void borrow_book(User*);
 void return_book(User*);
 void show_borrow(User*);
+void change_password(User*);
 
 #endif //NEW_USER_H

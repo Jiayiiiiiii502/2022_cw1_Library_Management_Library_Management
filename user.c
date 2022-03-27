@@ -5,6 +5,7 @@
 #include <string.h>
 #include "user.h"
 #include "login.h"
+#include "page.h"
 
 //specific user borrowing book
 void borrow_book(User* temp) {
@@ -26,7 +27,7 @@ void borrow_book(User* temp) {
         printf("------------------------------------------------\n");
         return;
     }
-    else if (choice > book_num || choice <= 0) {
+    else if (choice > head.length || choice <= 0) {
         printf("Invalid choice!\n");
         printf("------------------------------------------------\n");
     }
@@ -34,7 +35,7 @@ void borrow_book(User* temp) {
         //add borrowed book to the temp linklist
         printf("Begin borrowing!\n");
         Book *tb;
-        tb = book_head->next;
+        tb = head.list->next;
         for (int m = 1; m < choice; m++) {
             tb = tb->next;
         }
@@ -60,7 +61,8 @@ void show_borrow(User* temp){
     }
     printf("You have borrowed:\n");
     printf("ID\t\tTitle\t\tAuthor\t\tYear\n");
-    for(int m=0;m<temp_borrow;m++){
+    int m=0;
+    for(m=0;m<temp_borrow;m++){
         struct borrow_node a=temp->user_book;
         printf("%d \t\t%s \t\t %s \t\t   %d\n",m+1,a.borrow_book[m].temp_title,a.borrow_book[m].temp_authors,a.borrow_book[m].year);
     }
@@ -79,7 +81,7 @@ void return_book(User* account){
         int option;
         scanf("%d", &option);
         if (option == -1){
-            printf("Exiting the review system\n");
+            printf("Exiting the returning books system\n");
             return;
         }
         if (option > account->user_book.borrow_num || option < 0){
@@ -88,8 +90,8 @@ void return_book(User* account){
         else{
             int i = 0;
             Book* tb;
-            tb = book_head->next;
-            for (--option; i < option; ++i);
+            tb = head.list->next;
+            for (--option; i < option; ++i);//account->user_book.borrow_book[i].temp_title
             char title[100];
             strcpy(title, account->user_book.borrow_book[i].temp_title);
             printf("------------------------------------------------\n");
@@ -98,7 +100,7 @@ void return_book(User* account){
                 account->user_book.borrow_book[i] = account->user_book.borrow_book[i + 1];
                 tb->copies= tb->copies+1;
             }
-            --account->user_book.borrow_num;
+            account->user_book.borrow_num--;
             store_users();
             store_books();
             printf("<%s>return successfully!\n", title);
@@ -106,4 +108,16 @@ void return_book(User* account){
         }
     }
 
+}
+
+
+//change users passwords
+void change_password(User* temp){
+    char password[30];
+    printf("Welcome, %s !\n",temp->user_name);
+    printf("Please enter the new password:\n");
+    scanf("%s",password);
+    strcpy(temp->password,password);
+    store_users();
+    printf("Changing password successfully!\n");
 }

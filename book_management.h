@@ -24,13 +24,15 @@ typedef struct _Book {
     struct _Book *next; //pointer to the next book element
 }Book;
 
-Book* book_head;
-int book_num;
+//Book* book_head;
+//int book_num;
 
 typedef struct _BookList {
     Book* list; // pointer to a list of struct Book.
     unsigned int length; // number of elements in the (Book*) List
 }BookList;
+
+BookList head;
 
 typedef struct _BookArray {
     Book* array; // pointer to array (or linked list) of struct Book.

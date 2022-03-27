@@ -23,7 +23,7 @@ void add_book(){
     scanf("%d", &year);
     printf("Please enter its copies:\n");
     scanf("%d", &copies);
-    book_num++;
+    head.length++;
     //invoke create_book_list to add new book to the las linklist node and update linklist to the file
     creat_book_list(title,author,id,year,copies);
     printf("<%s> has been added to the library successfully!\n", title);
@@ -48,12 +48,12 @@ void remove_book(){
             printf("------------------------------------------------\n");
             return;
         }
-        else if(choice<=book_num && choice>0){
+        else if(choice<=head.length && choice>0){
             //remove specific book from the books linklist
             Book* tb;
             Book* np;
-            np = book_head;
-            tb = book_head->next;
+            np = head.list;
+            tb = head.list->next;
             for (int i = 1; i < choice; ++i)
             {
                 np = tb;
@@ -61,7 +61,7 @@ void remove_book(){
             }
             np->next = tb->next;
             free(tb);
-            book_num--;
+            head.length--;
             store_books();
             printf("Remove successfully!\n");
             printf("------------------------------------------------\n");
