@@ -87,7 +87,8 @@ void librarian_menu(){
     printf("2)Remove book\n");
     printf("3)Search for book\n");
     printf("4)Display book\n");
-    printf("5)Quit\n");
+    printf("5)Change password\n");
+    printf("6)Quit\n");
     printf("------------------------------------------------\n");
     int option;
     scanf("%d",&option);
@@ -100,7 +101,9 @@ void librarian_menu(){
             break;
         case 4: display_book();
             break;
-        case 5:printf("Librarian has been logged out!\n");
+        case 5: lib_change_password();
+        break;
+        case 6:printf("Librarian has been logged out!\n");
             printf("------------------------------------------------\n");
             return;
         default:
@@ -140,3 +143,5 @@ void find_book_menu(){
             find_book_menu();
     }
 }
+
+

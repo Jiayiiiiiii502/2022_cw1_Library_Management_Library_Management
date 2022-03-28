@@ -16,12 +16,12 @@
 typedef struct _Book {
     unsigned int id; //Book ID
     char *title; //book title
-    char temp_title[50];
     char *authors; //comma separated list of authors
-    char temp_authors[50];
     unsigned int year; // year of publication
     unsigned int copies; //number of copies the library has
     struct _Book *next; //pointer to the next book element
+    char temp_title[50];
+    char temp_authors[50];
 }Book;
 
 //Book* book_head;
@@ -34,10 +34,10 @@ typedef struct _BookList {
 
 BookList head;
 
-typedef struct _BookArray {
-    Book* array; // pointer to array (or linked list) of struct Book.
-    unsigned int length; // number of elements in the (Book*) array
-}BookArray;
+//typedef struct _BookArray {
+//    Book* array; // pointer to array (or linked list) of struct Book.
+//    unsigned int length; // number of elements in the (Book*) array
+//}BookArray;
 
 
 

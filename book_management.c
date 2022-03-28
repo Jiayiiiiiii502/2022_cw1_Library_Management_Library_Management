@@ -20,9 +20,9 @@ void load_books()
 
     //check the file exist
     FILE* fp2;
-    fp2 = fopen("library.txt", "rb");
+    fp2 = fopen("library.bin", "rb");
     if(fp2==NULL){
-        fp2=fopen("library.txt","wb");
+        fp2=fopen("library.bin","wb");
         if(fp2==NULL){
             printf("Fail to load the file!\n");
             exit(0);
@@ -50,12 +50,12 @@ void load_books()
 
 //store books from linklist to binary file
 void store_books(){
-    FILE*fp = fopen("library.txt", "wb");
+    FILE*fp = fopen("library.bin", "wb");
     Book* tb = head.list->next;
     while (tb)
     {
-       fwrite(tb, sizeof(Book), 1, fp);
-       tb = tb->next;
+        fwrite(tb, sizeof(Book), 1, fp);
+        tb = tb->next;
     }
     fclose(fp);
 }
@@ -140,6 +140,7 @@ void find_book_by_author (){
         if(strcmp(temp,tb->authors)==0)
             break;
         tb=tb->next;
+
     }
     if(tb==NULL)
     {
@@ -217,4 +218,3 @@ void display_book(){
         }
     }
 }
-

@@ -3,8 +3,10 @@
 //
 
 #include <stdlib.h>
+#include <string.h>
 #include "librarian.h"
 #include "page.h"
+#include "login.h"
 
 //add a book to the linklist and invoke create_book_list to update the linklist
 void add_book(){
@@ -73,4 +75,15 @@ void remove_book(){
         }
 
     }
+}
+
+
+void lib_change_password(){
+    User* initial=librarian_info();
+    char password[30];
+    printf("Welcome, %s !\n",initial->user_name);
+    printf("Please enter the new password:\n");
+    scanf("%s",password);
+    strcpy(initial->password,password);
+    printf("Changing password successfully!\n");
 }
