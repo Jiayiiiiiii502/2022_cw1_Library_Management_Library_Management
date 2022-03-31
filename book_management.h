@@ -24,22 +24,12 @@ typedef struct _Book {
     char temp_authors[50];
 }Book;
 
-//Book* book_head;
-//int book_num;
-
 typedef struct _BookList {
     Book* list; // pointer to a list of struct Book.
     unsigned int length; // number of elements in the (Book*) List
 }BookList;
 
-BookList head;
-
-//typedef struct _BookArray {
-//    Book* array; // pointer to array (or linked list) of struct Book.
-//    unsigned int length; // number of elements in the (Book*) array
-//}BookArray;
-
-
+BookList head;//library books linklist head node
 
 //saves the database of books in the specified file
 //returns 0 if books were stored correctly, or an error code otherwise
@@ -61,26 +51,23 @@ void load_books();
 //provided title can be found. The length of the list is also recorded in the returned structure, with 0 in case
 //list is the NULL pointer.
 //BookList find_book_by_title (const char *title);
-
+void find_book_by_title ();
 //finds books with the given authors.
 //returns a Booklist structure, where the field "list" is a newly allocated list of books, or null if no book with the
 //provided title can be found. The length of the list is also recorded in the returned structure, with 0 in case
 //list is the NULL pointer.
 //BookList find_book_by_author (const char *author);
-
+void find_book_by_author ();
 //finds books published in the given year.
 //returns a Booklist structure, where the field "list" is a list of books, or null if no book with the
 //provided title can be found. The length of the list is also recorded in the returned structure, with 0 in case
 //list is the NULL pointer.
 //BookList find_book_by_year (unsigned int year);
-
-
-void find_book_by_title ();
-void find_book_by_author ();
 void find_book_by_year ();
 
-
+//add a new book to the book linklist
 void creat_book_list(char*, char*, int, int, int);
+//display all books in library
 void display_book();
 
 #endif //NEW_BOOK_MANAGEMENT_H

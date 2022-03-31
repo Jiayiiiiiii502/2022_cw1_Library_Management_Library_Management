@@ -11,18 +11,15 @@
 void load_books()
 {
     //create head node to point to the book linklist
-//    book_head = (Book*)malloc(sizeof(Book));
-//    book_head->next = NULL;
-//    book_num = 0;
     head.list=(Book*)malloc(sizeof(Book));
     head.list->next=NULL;
     head.length=0;
 
     //check the file exist
     FILE* fp2;
-    fp2 = fopen("library.bin", "rb");
+    fp2 = fopen("library_test.bin", "rb");
     if(fp2==NULL){
-        fp2=fopen("library.bin","wb");
+        fp2=fopen("library_test.bin","wb");
         if(fp2==NULL){
             printf("Fail to load the file!\n");
             exit(0);
@@ -50,7 +47,7 @@ void load_books()
 
 //store books from linklist to binary file
 void store_books(){
-    FILE*fp = fopen("library.bin", "wb");
+    FILE*fp = fopen("library_test.bin", "wb");
     Book* tb = head.list->next;
     while (tb)
     {
@@ -80,6 +77,9 @@ void creat_book_list(char* title, char* author, int id, int year, int copies){
     //copy the temp_authors/temp_title to the *author/*title
     strcpy(tb->temp_authors, author);
     strcpy(tb->temp_title, title);
+    strcpy(tb->authors, author);
+    strcpy(tb->title, title);
+
     tb->id = id;
     tb->year = year;
     tb->copies =copies;
@@ -100,27 +100,31 @@ void creat_book_list(char* title, char* author, int id, int year, int copies){
 void find_book_by_title(){
     char temp[30];
     Book *tb=head.list->next;
+    printf("\n");
+    printf("------------------------------------------------------------------------------------------------\n");
     printf("Please enter the title of the book:");
     scanf("%s",temp);
     while(tb)
     {
-        if(strcmp(temp,tb->title)==0)
+        if(strcmp(temp,tb->temp_title)==0)
             break;
         tb=tb->next;
     }
     if(tb==NULL)
     {
         printf("Sorry,there is no such book in the library!\n");
+        printf("------------------------------------------------------------------------------------------------\n");
         return;
     }
     tb=head.list->next;
     printf("ID\t\tTitle\t\tAuthor\t\tYear\t\tCopies\n");
     while(tb)
     {
-        if(strcmp(temp,tb->title)==0)
-            printf("%-15d %-15s %-20s %-15d %-15d\n", tb->id, tb->title, tb->authors, tb->year, tb->copies);
+        if(strcmp(temp,tb->temp_title)==0)
+            printf("%-15d %-15s %-20s %-15d %-15d\n", tb->id, tb->temp_title, tb->temp_authors, tb->year, tb->copies);
         tb=tb->next;
     }
+    printf("------------------------------------------------------------------------------------------------\n");
     return;
 }
 
@@ -137,7 +141,7 @@ void find_book_by_author (){
     scanf("%s",temp);
     while(tb)
     {
-        if(strcmp(temp,tb->authors)==0)
+        if(strcmp(temp,tb->temp_authors)==0)
             break;
         tb=tb->next;
 
@@ -145,16 +149,18 @@ void find_book_by_author (){
     if(tb==NULL)
     {
         printf("Sorry,there is no such book in the library!\n");
+        printf("**************************************************\n");
         return;
     }
     tb=head.list->next;
     printf("ID\t\tTitle\t\tAuthor\t\tYear\t\tCopies\n");
     while(tb)
     {
-        if(strcmp(temp,tb->authors)==0)
-            printf("%-15d %-15s %-20s %-15d %-15d\n", tb->id, tb->title, tb->authors, tb->year, tb->copies);
+        if(strcmp(temp,tb->temp_authors)==0)
+            printf("%-15d %-15s %-20s %-15d %-15d\n", tb->id, tb->temp_title, tb->temp_authors, tb->year, tb->copies);
         tb=tb->next;
     }
+    printf("**************************************************\n");
     return;
 }
 
@@ -177,6 +183,7 @@ void find_book_by_year (){
     if(tb==NULL)
     {
         printf("Sorry,there is no such book in the library!\n");
+        printf("**************************************************\n");
         return;
     }
     tb=head.list->next;
@@ -184,9 +191,10 @@ void find_book_by_year (){
     while(tb)
     {
         if(year==tb->year)
-            printf("%-15d %-15s %-20s %-15d %-15d\n", tb->id, tb->title, tb->authors, tb->year, tb->copies);
+            printf("%-15d %-15s %-20s %-15d %-15d\n", tb->id, tb->temp_title, tb->temp_authors, tb->year, tb->copies);
         tb=tb->next;
     }
+    printf("**************************************************\n");
     return;
 }
 
@@ -196,6 +204,7 @@ void find_book_by_year (){
 
 //show all the books in the library by linklist
 void display_book(){
+    printf("------------------------------------------------------------------------------------------------\n");
     if (!head.length)
     {
         printf("Sorry! There is no book in the library!\n");
@@ -204,17 +213,22 @@ void display_book(){
 
     Book* all;
     all = head.list->next;
-    printf("-------------------------------Library---------------------------------\n");
-    printf("ID\t\tTitle\t\tAuthor\t\tYear\t\tCopies\n");
+    //printf("-------------------------------Library---------------------------------\n");
+    printf("Order\t\tID\t\tTitle\t\tAuthor\t\tYear\t\tCopies\n");
 
     //use book_num to ensure dynamic id
-    int i;
-    for(i=1;i<=head.length;i++){
-        while (all)
-        {
-            printf("%-15d %-15s %-20s %-15d %-15d\n", i, all->temp_title, all->temp_authors, all->year, all->copies);
-            all = all->next;
-            i++;
-        }
+    int i=1;
+//    for(i=1;i<=head.length;i++){
+//        while (all)
+//        {
+//            printf("&-15d %-15s %-20s %-15d %-15d\n", i, all->temp_title, all->temp_authors, all->year, all->copies);
+//            all = all->next;
+//            i++;
+//        }
+//    }
+    while(all){
+        printf("%-15d %-15d %-15s %-15s %-15d %-15d\n",i,all->id,all->temp_title,all->temp_authors,all->year,all->copies);
+        i++;
+        all=all->next;
     }
 }

@@ -9,8 +9,8 @@
 //borrow book linklist of a specific user
 struct borrow_node{
     int borrow_num;//number of borrowed books
-    int max_num;//constrain the number of every user(10)
-    Book borrow_book[3];
+    int max_num;//constrain the number of every user(3)
+    Book borrow_book[3];//borrow book linklist
 };
 
 typedef struct user

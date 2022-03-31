@@ -22,7 +22,10 @@ void users_file_to_list()
 
     //open the file
     FILE* file;
-    file = fopen("users.txt", "rb");
+    file = fopen("user_test.bin", "rb");
+    if(file==NULL){
+        return;
+    }
     User* np;
     np = user_head_node;
     User* temp = (User*)malloc(sizeof(User));
@@ -48,7 +51,7 @@ void user_borrow(User* borrow)
 
 //store user borrow info from linklist to file
 void store_users(){
-    FILE* file = fopen("users.txt", "wb");
+    FILE* file = fopen("user_test.bin", "wb");
     User* temp = user_head_node->next;
     while (temp)
     {
@@ -77,15 +80,16 @@ void add_user_to_list(char* username, char*name,char* password){
 //user_registration:
 void user_register(){
     char username[30];
+    printf("------------------------------------------------------------------------------------------------\n");
     printf("Please enter your username:\n");
     scanf("%s", username);
     User* account;
     if (account = search_username(username), account != NULL)
     {
-        printf("------------------------------------------------\n");
         printf("This username has been already registered!\n");
         printf("Please change your username or login directly!\n");
-        printf("------------------------------------------------\n");
+        printf("\n");
+        printf("------------------------------------------------------------------------------------------------\n");
         return;
     }
     char name[20];
@@ -97,8 +101,8 @@ void user_register(){
     //add new user information to the link list
     add_user_to_list(username,name, password);
     printf("<%s> had registered successfully!\n",username);
-    printf("------------------------------------------------\n");
     user_num++;
+    printf("------------------------------------------------------------------------------------------------\n");
 }
 
 //traverse username in the linklist
@@ -119,6 +123,7 @@ void user_login()
 {
     char username[25];
     char password[25];
+    printf("------------------------------------------------------------------------------------------------\n");
     printf("Please enter your username:\n");
     scanf("%s", username);
     User* temp;
@@ -126,7 +131,7 @@ void user_login()
     {
         printf("Invalid username!\n");
         printf("Please go registration first!\n");
-        printf("------------------------------------------------\n");
+        printf("------------------------------------------------------------------------------------------------\n");
         return;
     }
     printf("Please enter your password:\n");
@@ -135,10 +140,13 @@ void user_login()
     {
         printf("Invalid password!\n");
         printf("Please try again!");
+        printf("\n");
+        printf("------------------------------------------------------------------------------------------------\n");
         return;
     }
     printf("<%s> login successfully!...\n",username);
-    printf("------------------------------------------------\n");
+    printf("\n");
+    printf("------------------------------------------------------------------------------------------------\n");
     //jump to the user function menu
     user_menu(temp);
 }
@@ -162,22 +170,27 @@ void librarian_login(){
     User* initial=librarian_info();
     char username[30];
     char password[30];
+    printf("\n");
+    printf("------------------------------------------------------------------------------------------------\n");
     printf("Welcome!\n");
     printf("Please enter your username:\n");
     scanf("%s",username);
     if(strcmp(initial->user_name,username)){
         printf("Invalid librarian username!\n");
-        printf("------------------------------------------------\n");
+        printf("\n");
+        printf("------------------------------------------------------------------------------------------------\n");
         return;
     }
     printf("Please enter your password:\n");
     scanf("%s",password);
     if(strcmp(initial->password,password)){
         printf("Invalid librarian password!\n");
-        printf("------------------------------------------------\n");
+        printf("\n");
+        printf("------------------------------------------------------------------------------------------------\n");
         return;
     }
     printf("Successfully login as librarian!\n");
-    printf("------------------------------------------------\n");
+    printf("\n");
+    printf("------------------------------------------------------------------------------------------------\n");
     librarian_menu();
 }

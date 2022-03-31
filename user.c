@@ -3,60 +3,66 @@
 //
 
 #include <string.h>
+#include <stdlib.h>
 #include "user.h"
 #include "login.h"
 #include "page.h"
 
 //specific user borrowing book
 void borrow_book(User* temp) {
-    //create temp to store single user's book initialisation
-    int temp_borrow = temp->user_book.borrow_num;
-    int max_borrow = temp->user_book.max_num;
-    //ensure the number of borrowed books is small than 10
-    if (temp_borrow == max_borrow) {
-        printf("%s has borrowed %d books, please return a book first!\n", temp->user_name, max_borrow);
-        printf("------------------------------------------------\n");
-    }
-    //display all the book
-    display_book();
-    printf("Please enter the order of the book you need to borrow(-1 to quit):\n");
-    int choice;
-    scanf("%d", &choice);
-    if (choice == -1) {
-        printf("Come back successfully!\n");
-        printf("------------------------------------------------\n");
-        return;
-    }
-    else if (choice > head.length || choice <= 0) {
-        printf("Invalid choice!\n");
-        printf("------------------------------------------------\n");
-    }
-    else {
-        //add borrowed book to the temp linklist
-        printf("Begin borrowing!\n");
-        Book *tb;
-        tb = head.list->next;
-        for (int m = 1; m < choice; m++) {
-            tb = tb->next;
+    while(1) {
+        //create temp to store single user's book initialisation
+        int temp_borrow = temp->user_book.borrow_num;
+        int max_borrow = temp->user_book.max_num;
+        //ensure the number of borrowed books is small than 10
+        if (temp_borrow == max_borrow) {
+            printf("%s has borrowed %d books, please return a book first!\n", temp->user_name, max_borrow);
+            return;
         }
-        temp->user_book.borrow_book[temp_borrow] = *tb;
-        temp->user_book.borrow_num++;
-        tb->copies = tb->copies - 1;//update the library store
-        store_users();//update user info
-        store_books();//update user linklist
-        printf("Borrow <%s> successfully!\n", tb->temp_title);
-        printf("------------------------------------------------\n");
+        //display all the book
+        display_book();
+        printf("Please enter the order of the book you need to borrow(-1 to quit):\n");
+        int choice;
+        scanf("%d", &choice);
+        if (choice == -1) {
+            printf("Come back successfully!\n");
+            printf("\n");
+            printf("------------------------------------------------------------------------------------------------\n");
+            return;
+        } else if (choice > head.length || choice <= 0) {
+            printf("Invalid choice!\n");
+            //printf("------------------------------------------------\n");
+        } else {
+            //add borrowed book to the temp linklist
+            //printf("Begin borrowing!\n");
+            Book *tb;
+            tb = head.list->next;
+            for (int m = 1; m < choice; m++) {
+                tb = tb->next;
+            }
+            temp->user_book.borrow_book[temp_borrow] = *tb;
+            temp->user_book.borrow_num++;
+            tb->copies = tb->copies - 1;//update the library store
+            store_users();//update user info
+            store_books();//update user linklist
+            printf("Borrow <%s> successfully!\n", tb->temp_title);
+            //printf("------------------------------------------------\n");
+        }
     }
-}
+    }
+
 
 
 //show specific borrowed books of a user
 void show_borrow(User* temp){
     int temp_borrow=temp->user_book.borrow_num;
-    printf("------------------------------------------------\n");
+    printf("\n");
+    printf("------------------------------------------------------------------------------------------------\n");
     if(!temp_borrow){
         printf("You borrow 0 books!\n");
         printf("Please borrow a book first!\n");
+        printf("------------------------------------------------------------------------------------------------\n");
+        printf("\n");
         return;
     }
     printf("You have borrowed:\n");
@@ -69,42 +75,48 @@ void show_borrow(User* temp){
 }
 
 //specific user returning book
-void return_book(User* account){
-    while (2){
-        show_borrow(account);
-        //check if the user has borrowed
-        if (!account->user_book.borrow_num){
+void return_book(User* temp){
+    while (1)
+    {
+        show_borrow(temp);
+        if (!temp->user_book.borrow_num)
+        {
             return;
         }
-        printf("------------------------------------------------\n");
-        printf("Please enter the serial number of the book you need to return (enter -1 to exit the book return system)!\n");
-        int option;
-        scanf("%d", &option);
-        if (option == -1){
-            printf("Exiting the returning books system\n");
+        printf("Please enter the order of the book you need to return (enter -1 to exit the book return system)!\n");
+        int option = 0; scanf("%d", &option);
+        if (option == -1)
+        {
+            printf("Come back successfully!\n");
             return;
         }
-        if (option > account->user_book.borrow_num || option < 0){
-            printf("invalid option!\n");
+        if (option > temp->user_book.borrow_num || option <= 0)
+        {
+            printf("Invalid option!\n");
         }
-        else{
+        else {
             int i = 0;
-            Book* tb;
+            Book *tb;
             tb = head.list->next;
-            for (--option; i < option; ++i);//account->user_book.borrow_book[i].temp_title
+            //for (--option; i < option; ++i);
+
             char title[100];
-            strcpy(title, account->user_book.borrow_book[i].temp_title);
-            printf("------------------------------------------------\n");
-            for (; i < account->user_book.borrow_num; ++i)
-            {
-                account->user_book.borrow_book[i] = account->user_book.borrow_book[i + 1];
-                tb->copies= tb->copies+1;
+            strcpy(title, temp->user_book.borrow_book[i].temp_title);
+            printf("The chosen book is %s\n",temp->user_book.borrow_book[i].temp_title);
+
+            while (tb) {
+                i=option-1;
+                    if (tb->id==temp->user_book.borrow_book[i].id &&(strcmp(temp->user_book.borrow_book[i].temp_title, tb->temp_title) == 0)) {
+                        tb->copies = tb->copies + 1;
+                        temp->user_book.borrow_book[i] = temp->user_book.borrow_book[i + 1];
+                        break;
+                }
+                tb = tb->next;
             }
-            account->user_book.borrow_num--;
+            --temp->user_book.borrow_num;
             store_users();
             store_books();
-            printf("<%s>return successfully!\n", title);
-            printf("------------------------------------------------\n");
+            printf("<%s> return successfully!\n", title);
         }
     }
 

@@ -12,15 +12,17 @@
 void add_book(){
     //create temp array to get the size of title/author
     char title[100],author[100];
+    int temp_id;
     int id,year,copies;
-    printf("------------------------------------------------\n");
+    printf("\n");
+    printf("------------------------------------------------------------------------------------------------\n");;
     printf("Please follow the following rules (use '_' to represent ' '):\n");
+    printf("Please enter the id:\n");
+    scanf("%d", &id);
     printf("Please enter the title:\n");
     scanf("%s",title);
     printf("Please enter the author:\n");
     scanf("%s",author);
-    printf("Please enter the id:\n");
-    scanf("%d", &id);
     printf("Please enter the year:\n");
     scanf("%d", &year);
     printf("Please enter its copies:\n");
@@ -29,7 +31,8 @@ void add_book(){
     //invoke create_book_list to add new book to the las linklist node and update linklist to the file
     creat_book_list(title,author,id,year,copies);
     printf("<%s> has been added to the library successfully!\n", title);
-    printf("------------------------------------------------\n");
+    printf("------------------------------------------------------------------------------------------------\n");
+    printf("\n");
     librarian_menu();
 }
 
@@ -38,7 +41,8 @@ void add_book(){
 void remove_book(){
     while (1)
     {
-        printf("------------------------------------------------\n");
+        printf("\n");
+        printf("------------------------------------------------------------------------------------------------\n");
         //display all the books in the library
         display_book();
         printf("Please enter the order of the book you wanna move out:(-1 to quit):\n");
@@ -47,7 +51,8 @@ void remove_book(){
         if (choice == -1)
         {
             printf("Come back successfully!\n");
-            printf("------------------------------------------------\n");
+            printf("\n");
+            printf("------------------------------------------------------------------------------------------------\n");
             return;
         }
         else if(choice<=head.length && choice>0){
@@ -66,7 +71,6 @@ void remove_book(){
             head.length--;
             store_books();
             printf("Remove successfully!\n");
-            printf("------------------------------------------------\n");
         }
         else
         {
@@ -77,13 +81,3 @@ void remove_book(){
     }
 }
 
-
-void lib_change_password(){
-    User* initial=librarian_info();
-    char password[30];
-    printf("Welcome, %s !\n",initial->user_name);
-    printf("Please enter the new password:\n");
-    scanf("%s",password);
-    strcpy(initial->password,password);
-    printf("Changing password successfully!\n");
-}

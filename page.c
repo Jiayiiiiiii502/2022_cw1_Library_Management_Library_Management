@@ -38,7 +38,10 @@ void main_menu(){
             case 6: return;
             default:
                 fflush(stdin);
-                printf("Invalid option!\n"); break;
+                printf("Invalid option!\n");
+                printf("\n");
+                printf("------------------------------------------------------------------------------------------------\n");
+                break;
         }
     }
 }
@@ -46,7 +49,6 @@ void main_menu(){
 
 //user manipulation page
 void user_menu(User* temp) {
-    printf("------------------------------------------------\n");
     printf("user:%s\n", temp->user_name);
     printf("Please enter your option\n");
     printf("1)borrow book\n");
@@ -56,7 +58,7 @@ void user_menu(User* temp) {
     printf("5)change password\n");
     //printf("6)remove account\n");
     printf("0)log out\n");
-    printf("------------------------------------------------\n");
+    printf(" Option:");
     int option;
     scanf("%d", &option);
     switch (option)
@@ -70,7 +72,10 @@ void user_menu(User* temp) {
         case 4: display_book();
             break;
         case 5: change_password(temp);
-        case 0: printf("come back successfully!\n");return;
+        case 0: printf("come back successfully!\n");
+        printf("\n");
+            printf("------------------------------------------------------------------------------------------------\n");
+        return;
         default:
             fflush(stdin);
             printf("Invalid option!\n"); break;
@@ -80,16 +85,13 @@ void user_menu(User* temp) {
 
 //librarian function menu
 void librarian_menu(){
-    printf("------------------------------------------------\n");
     printf("Welcome!\n");
     printf("Please enter your choice:\n");
     printf("1)Add book\n");
     printf("2)Remove book\n");
     printf("3)Search for book\n");
     printf("4)Display book\n");
-    printf("5)Change password\n");
-    printf("6)Quit\n");
-    printf("------------------------------------------------\n");
+    printf("5)Quit\n");
     int option;
     scanf("%d",&option);
     switch(option){
@@ -101,10 +103,9 @@ void librarian_menu(){
             break;
         case 4: display_book();
             break;
-        case 5: lib_change_password();
-        break;
-        case 6:printf("Librarian has been logged out!\n");
-            printf("------------------------------------------------\n");
+        case 5:printf("Librarian has been logged out!\n");
+            printf("\n");
+            printf("------------------------------------------------------------------------------------------------\n");
             return;
         default:
             fflush(stdin);
@@ -115,13 +116,14 @@ void librarian_menu(){
 
 //find books choices menu
 void find_book_menu(){
-    printf("------------------------------------------------\n");
+    printf("\n");
+    printf("------------------------------------------------------------------------------------------------\n");
     printf("Please choose a way to find books:\n");
     printf("1)Find book by title\n");
     printf("2)Find book by author\n");
     printf("3)Find book by year\n");
     printf("4)Quit\n");
-    printf("------------------------------------------------\n");
+    printf(" Option:");
     int choice;
     scanf("%d", &choice);
     switch(choice)
@@ -133,13 +135,13 @@ void find_book_menu(){
         case 3: find_book_by_year();
             break;
         case 4: printf("Come back successfully!\n");
-            printf("------------------------------------------------\n");
+        printf("\n");
+            printf("------------------------------------------------------------------------------------------------\n");
             return;
         default:
             fflush(stdin);
             printf("Invalid choice!\n");
             printf("Please try again!\n");
-            printf("------------------------------------------------\n");
             find_book_menu();
     }
 }
