@@ -17,9 +17,9 @@ void load_books()
 
     //check the file exist
     FILE* fp2;
-    fp2 = fopen("library_test.bin", "rb");
+    fp2 = fopen(bookfilename, "rb");
     if(fp2==NULL){
-        fp2=fopen("library_test.bin","wb");
+        fp2=fopen(bookfilename,"wb");
         if(fp2==NULL){
             printf("Fail to load the file!\n");
             exit(0);
@@ -47,7 +47,7 @@ void load_books()
 
 //store books from linklist to binary file
 void store_books(){
-    FILE*fp = fopen("library_test.bin", "wb");
+    FILE*fp = fopen(bookfilename, "wb");
     Book* tb = head.list->next;
     while (tb)
     {
@@ -113,6 +113,7 @@ void find_book_by_title(){
     if(tb==NULL)
     {
         printf("Sorry,there is no such book in the library!\n");
+        printf("\n");
         printf("------------------------------------------------------------------------------------------------\n");
         return;
     }
@@ -149,7 +150,8 @@ void find_book_by_author (){
     if(tb==NULL)
     {
         printf("Sorry,there is no such book in the library!\n");
-        printf("**************************************************\n");
+        printf("\n");
+        printf("------------------------------------------------------------------------------------------------\n");
         return;
     }
     tb=head.list->next;
@@ -160,7 +162,7 @@ void find_book_by_author (){
             printf("%-15d %-15s %-20s %-15d %-15d\n", tb->id, tb->temp_title, tb->temp_authors, tb->year, tb->copies);
         tb=tb->next;
     }
-    printf("**************************************************\n");
+    printf("------------------------------------------------------------------------------------------------\n");
     return;
 }
 
@@ -183,7 +185,8 @@ void find_book_by_year (){
     if(tb==NULL)
     {
         printf("Sorry,there is no such book in the library!\n");
-        printf("**************************************************\n");
+        printf("\n");
+        printf("------------------------------------------------------------------------------------------------\n");
         return;
     }
     tb=head.list->next;
@@ -194,7 +197,7 @@ void find_book_by_year (){
             printf("%-15d %-15s %-20s %-15d %-15d\n", tb->id, tb->temp_title, tb->temp_authors, tb->year, tb->copies);
         tb=tb->next;
     }
-    printf("**************************************************\n");
+    printf("------------------------------------------------------------------------------------------------\n");
     return;
 }
 

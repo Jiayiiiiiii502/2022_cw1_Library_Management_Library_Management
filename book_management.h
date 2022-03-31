@@ -31,6 +31,8 @@ typedef struct _BookList {
 
 BookList head;//library books linklist head node
 
+char* bookfilename;
+char* userfilename;
 //saves the database of books in the specified file
 //returns 0 if books were stored correctly, or an error code otherwise
 //int store_books(FILE *file);

@@ -109,8 +109,8 @@ void librarian_menu(){
             return;
         default:
             fflush(stdin);
+            printf("Invalid choice!\n");
             break;
-            //printf("Invalid choice!\n");
     }
 }
 

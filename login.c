@@ -22,7 +22,7 @@ void users_file_to_list()
 
     //open the file
     FILE* file;
-    file = fopen("user_test.bin", "rb");
+    file = fopen(userfilename, "rb");
     if(file==NULL){
         return;
     }
@@ -51,7 +51,7 @@ void user_borrow(User* borrow)
 
 //store user borrow info from linklist to file
 void store_users(){
-    FILE* file = fopen("user_test.bin", "wb");
+    FILE* file = fopen(userfilename, "wb");
     User* temp = user_head_node->next;
     while (temp)
     {
