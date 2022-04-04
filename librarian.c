@@ -8,6 +8,17 @@
 #include "page.h"
 #include "login.h"
 
+
+int search_id(int id){
+    Book* np=head.list->next;
+    while(np){
+        if(id==np->id){
+            return 1;
+        }
+        np=np->next;
+    }
+    return 0;
+}
 //add a book to the linklist and invoke create_book_list to update the linklist
 void add_book(){
     //create temp array to get the size of title/author
@@ -17,8 +28,12 @@ void add_book(){
     printf("\n");
     printf("------------------------------------------------------------------------------------------------\n");;
     printf("Please follow the following rules (use '_' to represent ' '):\n");
-    printf("Please enter the id:\n");
+    printf("Please enter an integer of book id:\n");
     scanf("%d", &id);
+    if(search_id(id)==1){
+        printf("This id has been used! Please change!\n");
+        return;
+    }
     printf("Please enter the title:\n");
     scanf("%s",title);
     printf("Please enter the author:\n");

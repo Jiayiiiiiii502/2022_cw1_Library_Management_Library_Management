@@ -13,6 +13,7 @@ void borrow_book(User* temp) {
     while(1) {
         //create temp to store single user's book initialisation
         int temp_borrow = temp->user_book.borrow_num;
+        temp->user_book.max_num=3;
         int max_borrow = temp->user_book.max_num;
         //ensure the number of borrowed books is small than 10
         if (temp_borrow == max_borrow) {
@@ -24,6 +25,7 @@ void borrow_book(User* temp) {
         printf("Please enter the order of the book you need to borrow(-1 to quit):\n");
         int choice;
         scanf("%d", &choice);
+        clear();
         if (choice == -1) {
             printf("Come back successfully!\n");
             printf("\n");
@@ -45,7 +47,7 @@ void borrow_book(User* temp) {
             tb->copies = tb->copies - 1;//update the library store
             store_users();//update user info
             store_books();//update user linklist
-            printf("Borrow <%s> successfully!\n", tb->temp_title);
+            printf("Borrow <%d> successfully!\n", tb->id);
             //printf("------------------------------------------------\n");
         }
     }
@@ -66,11 +68,11 @@ void show_borrow(User* temp){
         return;
     }
     printf("You have borrowed:\n");
-    printf("ID\t\tTitle\t\tAuthor\t\tYear\n");
+    printf("Order\t\tID\t\tTitle\t\tAuthor\t\tYear\n");
     int m=0;
     for(m=0;m<temp_borrow;m++){
         struct borrow_node a=temp->user_book;
-        printf("%d \t\t%s \t\t %s \t\t   %d\n",m+1,a.borrow_book[m].temp_title,a.borrow_book[m].temp_authors,a.borrow_book[m].year);
+        printf("%d \t\t%d \t\t%s \t\t %s \t\t   %d\n",m+1,a.borrow_book[m].id,a.borrow_book[m].temp_title,a.borrow_book[m].temp_authors,a.borrow_book[m].year);
     }
 }
 
@@ -85,6 +87,7 @@ void return_book(User* temp){
         }
         printf("Please enter the order of the book you need to return (enter -1 to exit the book return system)!\n");
         int option = 0; scanf("%d", &option);
+        clear();
         if (option == -1)
         {
             printf("Come back successfully!\n");

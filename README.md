@@ -12,3 +12,4 @@ command line to initialise file of books and user's information
 #URL of git repository
 https://github.com/sc20jx/2022_cw1_Library_Management_Library_Management.git
 
+![image](https://github.com/sc20jx/2022_cw1_Library_Management_Library_Management/blob/main/commit.jpg)

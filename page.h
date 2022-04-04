@@ -17,4 +17,6 @@ void user_menu(User*);
 void librarian_menu();
 //find books function page
 void find_book_menu();
+//clear the controller content
+void clear();
 #endif //NEW_PAGE_H

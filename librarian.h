@@ -10,7 +10,8 @@
 //图书管理员操作：
 void add_book();
 void remove_book();
-void lib_change_password();
+int search_id(int);
+//void lib_change_password();
 
 User* librarian;
 #endif //NEW_LIBRARIAN_H

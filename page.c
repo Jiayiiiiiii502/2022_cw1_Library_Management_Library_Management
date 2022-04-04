@@ -22,7 +22,7 @@ void main_menu(){
         printf("6)Quit\n");
         printf("  Option:");
         int option; scanf("%d", &option);
-
+        clear();
         switch (option)
         {
             case 1: user_register();
@@ -61,6 +61,7 @@ void user_menu(User* temp) {
     printf(" Option:");
     int option;
     scanf("%d", &option);
+    clear();
     switch (option)
     {
         case 1: borrow_book(temp);
@@ -94,6 +95,7 @@ void librarian_menu(){
     printf("5)Quit\n");
     int option;
     scanf("%d",&option);
+    clear();
     switch(option){
         case 1: add_book();
             break;
@@ -126,6 +128,7 @@ void find_book_menu(){
     printf(" Option:");
     int choice;
     scanf("%d", &choice);
+    clear();
     switch(choice)
     {
         case 1: find_book_by_title();
@@ -146,4 +149,13 @@ void find_book_menu(){
     }
 }
 
+void clear()
+{
+    char b;
+    do
+    {
+        scanf("%c",&b);
+    }
+    while(b !='\n');
+}
 
