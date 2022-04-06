@@ -109,10 +109,10 @@ void display_user()
     int i = 1;
     User* np ;
     np = user_head_node->next;
-    printf("Order  Username\t\tPassword\n");
+    printf("Order\t\tName\t\tUsername\t\tPassword\n");
     while (np)
     {
-        printf("%d) %-20s %-20s \n", i, np->user_name, np->password);
+        printf("%d)\t\t%s\t\t%s\t\t\t%s \n", i, np->name,np->user_name, np->password);
         np = np->next;
         ++i;
     }
