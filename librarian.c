@@ -7,6 +7,7 @@
 #include "librarian.h"
 #include "page.h"
 #include "login.h"
+#include "user.h"
 
 
 int search_id(int id){
@@ -23,19 +24,26 @@ int search_id(int id){
 void add_book(){
     //create temp array to get the size of title/author
     char title[100],author[100];
-    int temp_id;
     int id,year,copies;
     printf("\n");
     printf("------------------------------------------------------------------------------------------------\n");;
-    printf("Please follow the following rules (use '_' to represent ' '):\n");
-    printf("Please enter an integer of book id:\n");
+    printf("Please follow the following rules:\n");
+    printf("Please enter an integer of book id(0-1000):\n");
+    printf("(If you enter a letter or string, the id will default to 0)\n");
     scanf("%d", &id);
+    if(id>1000){
+        printf("Please ensure id is smaller than 1000.\n");
+        return;
+    }
     if(search_id(id)==1){
         printf("This id has been used! Please change!\n");
         return;
     }
+    printf("%d\n",id);
+    clear();
     printf("Please enter the title:\n");
-    scanf("%s",title);
+    scanf("%[^\n]",title);
+    clear();
     printf("Please enter the author:\n");
     scanf("%s",author);
     printf("Please enter the year:\n");
@@ -93,6 +101,62 @@ void remove_book(){
             printf("Please tyr again!\n");
         }
 
+    }
+}
+
+void display_user()
+{
+    int i = 1;
+    User* np ;
+    np = user_head_node->next;
+    printf("Order  Username\t\tPassword\n");
+    while (np)
+    {
+        printf("%d) %-20s %-20s \n", i, np->user_name, np->password);
+        np = np->next;
+        ++i;
+    }
+}
+
+void delete_user()
+{
+    while (1)
+    {
+        display_user();
+        printf("Please enter the order of the user you want to remove(input -1 back):\n");
+        int option;
+        scanf("%d", &option);
+        clear();
+        if (option == -1)
+        {
+            printf("Come back successfully!\n");
+            printf("\n");
+            printf("------------------------------------------------------------------------------------------------\n");
+            return;
+        }
+        else if (option > user_num || option <= 0)
+        {
+            printf("Invalid choice!\n");
+            printf("\n");
+        }
+        else
+        {
+
+            User* tb;
+            User *np;
+            np = user_head_node;
+            tb = user_head_node->next;
+            for (int i = 1; i < option; ++i)
+            {
+                np = tb;
+                tb = tb->next;
+            }
+            np->next = tb->next;
+            free(tb);
+            --user_num;
+            store_users();
+            printf("Remove successfully!\n");
+        }
     }
 }
 

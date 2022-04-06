@@ -43,6 +43,7 @@ void main_menu(){
                 printf("------------------------------------------------------------------------------------------------\n");
                 break;
         }
+        option=0;
     }
 }
 
@@ -78,7 +79,7 @@ void user_menu(User* temp) {
             printf("------------------------------------------------------------------------------------------------\n");
         return;
         default:
-            fflush(stdin);
+            //fflush(stdin);
             printf("Invalid option!\n"); break;
     }
 }
@@ -92,7 +93,10 @@ void librarian_menu(){
     printf("2)Remove book\n");
     printf("3)Search for book\n");
     printf("4)Display book\n");
-    printf("5)Quit\n");
+    printf("5)Display all user\n");
+    printf("6)Quit\n");
+    printf("7)Delete user\n");
+
     int option;
     scanf("%d",&option);
     clear();
@@ -105,10 +109,16 @@ void librarian_menu(){
             break;
         case 4: display_book();
             break;
-        case 5:printf("Librarian has been logged out!\n");
+        case 5:display_user();
+            break;
+        case 6:
+            printf("Librarian has been logged out!\n");
             printf("\n");
             printf("------------------------------------------------------------------------------------------------\n");
             return;
+        case 7:
+            delete_user();
+            break;
         default:
             fflush(stdin);
             printf("Invalid choice!\n");

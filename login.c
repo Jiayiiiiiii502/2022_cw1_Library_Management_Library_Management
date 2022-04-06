@@ -126,6 +126,7 @@ void user_login()
     printf("------------------------------------------------------------------------------------------------\n");
     printf("Please enter your username:\n");
     scanf("%s", username);
+    clear();
     User* temp;
     if (temp = search_username(username), temp == NULL)
     {
@@ -136,6 +137,7 @@ void user_login()
     }
     printf("Please enter your password:\n");
     scanf("%s", password);
+    clear();
     if (strcmp(temp->password, password))
     {
         printf("Invalid password!\n");
@@ -160,8 +162,8 @@ User* librarian_info()
 {
     librarian = (User*)malloc(sizeof(User));
     strcpy(librarian->name,"Librarian");
-    strcpy(librarian->user_name, "0");
-    strcpy(librarian->password, "0");
+    strcpy(librarian->user_name, "1");
+    strcpy(librarian->password, "1");
     return librarian;
 }
 

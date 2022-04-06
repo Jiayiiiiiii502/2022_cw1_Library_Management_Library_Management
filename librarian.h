@@ -11,7 +11,9 @@
 void add_book();
 void remove_book();
 int search_id(int);
-//void lib_change_password();
+void display_user();
+void delete_user();
+
 
 User* librarian;
 #endif //NEW_LIBRARIAN_H

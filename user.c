@@ -35,8 +35,6 @@ void borrow_book(User* temp) {
             printf("Invalid choice!\n");
             //printf("------------------------------------------------\n");
         } else {
-            //add borrowed book to the temp linklist
-            //printf("Begin borrowing!\n");
             Book *tb;
             tb = head.list->next;
             for (int m = 1; m < choice; m++) {
@@ -44,6 +42,13 @@ void borrow_book(User* temp) {
             }
             temp->user_book.borrow_book[temp_borrow] = *tb;
             temp->user_book.borrow_num++;
+            if(tb->copies==0){
+                printf("This book is not avaliable!\n");
+                printf("Please come back later!\n");
+                printf("\n");
+                printf("------------------------------------------------------------------------------------------------\n");
+                return;
+            }
             tb->copies = tb->copies - 1;//update the library store
             store_users();//update user info
             store_books();//update user linklist
