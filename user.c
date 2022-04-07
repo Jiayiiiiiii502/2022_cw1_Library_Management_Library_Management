@@ -51,6 +51,7 @@ void borrow_book(User* temp) {
                 return;
             }
             tb->copies = tb->copies - 1;//update the library store
+            tb->borrowed+=1;
             store_users();//update user info
             store_books();//update user linklist
             printf("Borrow <%d> successfully!\n", tb->id);

@@ -83,6 +83,7 @@ void creat_book_list(char* title, char* author, int id, int year, int copies){
     tb->id = id;
     tb->year = year;
     tb->copies =copies;
+    tb->borrowed=0;
     tb->next = NULL;
     np->next = tb;
 

@@ -44,7 +44,8 @@ void add_book(){
     scanf("%[^\n]",title);
     clear();
     printf("Please enter the author:\n");
-    scanf("%s",author);
+    scanf("%[^\n]",author);
+    clear();
     printf("Please enter the year:\n");
     scanf("%d", &year);
     printf("Please enter its copies:\n");
@@ -88,6 +89,12 @@ void remove_book(){
                 np = tb;
                 tb = tb->next;
             }
+            if(np->next->borrowed>0){
+                printf("This book is being borrowed and cannot be removed!\n");
+                printf("\n");
+                printf("------------------------------------------------------------------------------------------------\n");
+                return;
+            }
             np->next = tb->next;
             free(tb);
             head.length--;
@@ -118,7 +125,7 @@ void display_user()
     printf("Order\t\tName\t\tUsername\t\tPassword\n");
     while (np)
     {
-        printf("%d)\t\t%s\t\t%s\t\t\t%s \n", i, np->name,np->user_name, np->password);
+        printf("%d\t\t%s\t\t%s\t\t\t%s \n", i, np->name,np->user_name, np->password);
         np = np->next;
         ++i;
     }

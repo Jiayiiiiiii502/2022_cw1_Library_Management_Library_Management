@@ -23,12 +23,12 @@ int main(int argc,char*argv[]) {
         return 0;
     }
 //windows:
-//        char book[20];
-//        char user[20];
-//        bookfilename=(char*)malloc(sizeof(book+1));
-//        userfilename=(char*)malloc(sizeof(user+1));
-//        strcpy(bookfilename,"library.bin");
-//        strcpy(userfilename,"users.bin");
-//        main_menu();
-//        return 0;
+        char book[20];
+        char user[20];
+        bookfilename=(char*)malloc(sizeof(book+1));
+        userfilename=(char*)malloc(sizeof(user+1));
+        strcpy(bookfilename,"library.bin");
+        strcpy(userfilename,"users.bin");
+        main_menu();
+        return 0;
 }
