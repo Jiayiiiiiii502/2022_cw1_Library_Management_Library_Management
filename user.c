@@ -33,7 +33,8 @@ void borrow_book(User* temp) {
             return;
         } else if (choice > head.length || choice <= 0) {
             printf("Invalid choice!\n");
-            //printf("------------------------------------------------\n");
+            printf("\n");
+            printf("------------------------------------------------\n");
         } else {
             Book *tb;
             tb = head.list->next;

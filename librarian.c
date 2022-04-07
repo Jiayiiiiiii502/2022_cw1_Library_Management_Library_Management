@@ -39,7 +39,6 @@ void add_book(){
         printf("This id has been used! Please change!\n");
         return;
     }
-    printf("%d\n",id);
     clear();
     printf("Please enter the title:\n");
     scanf("%[^\n]",title);
@@ -104,8 +103,15 @@ void remove_book(){
     }
 }
 
+//display all the users' information for query
 void display_user()
 {
+    if(!user_num){
+        printf("Sorry! There is no user in the library!\n");
+        printf("\n");
+        printf("------------------------------------------------------------------------------------------------\n");
+        return;
+    }
     int i = 1;
     User* np ;
     np = user_head_node->next;
@@ -118,6 +124,7 @@ void display_user()
     }
 }
 
+//remove user from the linklist
 void delete_user()
 {
     while (1)
@@ -151,7 +158,15 @@ void delete_user()
                 np = tb;
                 tb = tb->next;
             }
+
+            //check whether this account has borrowed books
+            //printf("username is %s, and he borrows %d books",np->next->user_name,np->next->user_book.borrow_num);
+            if(np->next->user_book.borrow_num>0){
+                printf("This account borrows books, fail to remove!\n");
+                return;
+            }
             np->next = tb->next;
+
             free(tb);
             --user_num;
             store_users();

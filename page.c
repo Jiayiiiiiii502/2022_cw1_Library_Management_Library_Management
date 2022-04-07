@@ -93,9 +93,10 @@ void librarian_menu(){
     printf("2)Remove book\n");
     printf("3)Search for book\n");
     printf("4)Display book\n");
-    printf("5)Display all user\n");
-    printf("6)Quit\n");
-    printf("7)Delete user\n");
+    printf("5)Display user\n");
+    printf("6)Remove user\n");
+    printf("7)Quit\n");
+
 
     int option;
     scanf("%d",&option);
@@ -111,17 +112,19 @@ void librarian_menu(){
             break;
         case 5:display_user();
             break;
-        case 6:
+        case 6:delete_user();
+            break;
+        case 7:
             printf("Librarian has been logged out!\n");
             printf("\n");
             printf("------------------------------------------------------------------------------------------------\n");
             return;
-        case 7:
-            delete_user();
-            break;
+
         default:
             fflush(stdin);
             printf("Invalid choice!\n");
+            printf("\n");
+            printf("------------------------------------------------------------------------------------------------\n");
             break;
     }
 }

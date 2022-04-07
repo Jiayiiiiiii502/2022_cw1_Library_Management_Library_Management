@@ -211,6 +211,7 @@ void display_book(){
     if (!head.length)
     {
         printf("Sorry! There is no book in the library!\n");
+        printf("\n");
         return;
     }
 

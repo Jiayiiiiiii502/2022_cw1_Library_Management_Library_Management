@@ -162,8 +162,8 @@ User* librarian_info()
 {
     librarian = (User*)malloc(sizeof(User));
     strcpy(librarian->name,"Librarian");
-    strcpy(librarian->user_name, "1");
-    strcpy(librarian->password, "1");
+    strcpy(librarian->user_name, "0");
+    strcpy(librarian->password, "0");
     return librarian;
 }
 
